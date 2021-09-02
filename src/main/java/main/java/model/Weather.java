@@ -4,6 +4,9 @@ public class Weather {
     private String groupOfWeatherParameter;
     private String weatherConditionWithinTheGroup;
 
+    public Weather() {
+    }
+
     public Weather(String groupOfWeatherParameter, String weatherConditionWithinTheGroup) {
         this.groupOfWeatherParameter = groupOfWeatherParameter;
         this.weatherConditionWithinTheGroup = weatherConditionWithinTheGroup;

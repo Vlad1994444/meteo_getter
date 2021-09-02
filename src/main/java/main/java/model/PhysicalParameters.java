@@ -1,17 +1,17 @@
 package main.java.model;
 
 public class PhysicalParameters {
-    private int temperature;
-    private int fillingTemperature;
-    private int minTemp;
-    private int maxTemp;
+    private double temperature;
+    private double fillingTemperature;
+    private double minTemp;
+    private double maxTemp;
     private int pressure;
     private int humidity;
 
     public PhysicalParameters() {
     }
 
-    public PhysicalParameters(int temperature, int fillingTemperature, int minTemp, int maxTemp, int pressure, int humidity) {
+    public PhysicalParameters(double temperature, double fillingTemperature, double minTemp, double maxTemp, int pressure, int humidity) {
         this.temperature = temperature;
         this.fillingTemperature = fillingTemperature;
         this.minTemp = minTemp;
@@ -20,35 +20,35 @@ public class PhysicalParameters {
         this.humidity = humidity;
     }
 
-    public int getTemperature() {
+    public double getTemperature() {
         return temperature;
     }
 
-    public void setTemperature(int temperature) {
+    public void setTemperature(double temperature) {
         this.temperature = temperature;
     }
 
-    public int getFillingTemperature() {
+    public double getFillingTemperature() {
         return fillingTemperature;
     }
 
-    public void setFillingTemperature(int fillingTemperature) {
+    public void setFillingTemperature(double fillingTemperature) {
         this.fillingTemperature = fillingTemperature;
     }
 
-    public int getMinTemp() {
+    public double getMinTemp() {
         return minTemp;
     }
 
-    public void setMinTemp(int minTemp) {
+    public void setMinTemp(double minTemp) {
         this.minTemp = minTemp;
     }
 
-    public int getMaxTemp() {
+    public double getMaxTemp() {
         return maxTemp;
     }
 
-    public void setMaxTemp(int maxTemp) {
+    public void setMaxTemp(double maxTemp) {
         this.maxTemp = maxTemp;
     }
 

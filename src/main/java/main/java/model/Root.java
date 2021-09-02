@@ -7,13 +7,13 @@ import java.util.List;
 
 public class Root {
 
-    private List<Weather>weather = new ArrayList<>();
-    private PhysicalParameters physicalParameters = new PhysicalParameters();
+    private List<Weather>weather;
+    private PhysicalParameters physicalParameters;
     private int visibility;
-    private Wind wind = new Wind();
-    private Clouds clouds = new Clouds();
+    private Wind wind;
+    private Clouds clouds;
     private Long timeOfDataUNIXFormat;
-    private CountrySunriseSunset countrySunriseSunset = new CountrySunriseSunset();
+    private CountrySunriseSunset countrySunriseSunset;
 
     public List<Weather> getWeather() {
         return weather;
