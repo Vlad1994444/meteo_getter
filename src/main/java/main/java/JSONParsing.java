@@ -8,14 +8,9 @@ import org.json.simple.parser.JSONParser;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JSONParsing {
+public class JSONParsing{
 
     GetURLContent urlContent = new GetURLContent();
-    private static final String WEATHER = "weather";
-    private static final String WEATHER_MAIN = "main";
-    private static final String WEATHER_DESCRIPTION = "description";
-    Wind wind = new Wind();
-    Clouds clouds = new Clouds();
 
     Root root = new Root();
 
@@ -25,12 +20,12 @@ public class JSONParsing {
         try {
             JSONObject rootJSONObject = (JSONObject) parser.parse(urlContent.getOutput());
 
-            JSONArray weatherFromJSON = (JSONArray) rootJSONObject.get(WEATHER);
+            JSONArray weatherFromJSON = (JSONArray) rootJSONObject.get(Constants.WEATHER);
             List<Weather>weather = new ArrayList<>();
             for(Object weatherOne:weatherFromJSON){
                 JSONObject currentWeather = (JSONObject) weatherOne;
-                String cloudDescriptionWeatherOne = (String) currentWeather.get(WEATHER_MAIN);
-                String descriptionWeatherOne = (String) currentWeather.get(WEATHER_DESCRIPTION);
+                String cloudDescriptionWeatherOne = (String) currentWeather.get(Constants.WEATHER_MAIN);
+                String descriptionWeatherOne = (String) currentWeather.get(Constants.WEATHER_DESCRIPTION);
                 weather.add(new Weather(cloudDescriptionWeatherOne, descriptionWeatherOne));
             }
             root.setWeather(weather);

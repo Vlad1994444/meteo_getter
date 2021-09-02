@@ -11,8 +11,6 @@ public class GetURLContent {
     private static final String CITY = "London";
     private static final String API_ONE = "ed9389c8d74c9800aedba32a76aabcb7";
     private static final String API_TWO = "9ee48bcdc71857e72c3303e60dfd2b08";
-//    String output = getURLCont(
-//            "https://history.openweathermap.org/data/2.5/aggregated/year?q=" + city + "&appid="+ APITwo);
 
     String output = getURLCont(
             "https://api.openweathermap.org/data/2.5/weather?q=" + CITY+ "&units=metric&appid="+ API_TWO);
