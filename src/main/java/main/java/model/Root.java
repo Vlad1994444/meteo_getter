@@ -12,7 +12,7 @@ public class Root {
     private int visibility;
     private Wind wind;
     private Clouds clouds;
-    private Long timeOfDataUNIXFormat;
+    private long timeOfDataUNIXFormat;
     private CountrySunriseSunset countrySunriseSunset;
 
     public List<Weather> getWeather() {

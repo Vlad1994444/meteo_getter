@@ -8,12 +8,13 @@ import java.net.URLConnection;
 public class GetURLContent {
 
     String line;
-    private static final String CITY = "London";
+
+    public static String CITY = null;
     private static final String API_ONE = "ed9389c8d74c9800aedba32a76aabcb7";
     private static final String API_TWO = "9ee48bcdc71857e72c3303e60dfd2b08";
 
     String output = getURLCont(
-            "https://api.openweathermap.org/data/2.5/weather?q=" + CITY+ "&units=metric&appid="+ API_TWO);
+            "https://api.openweathermap.org/data/2.5/weather?q=" + CITY + "&units=metric&appid="+ API_TWO);
 
     public String getOutput() {
         return output;
@@ -21,8 +22,6 @@ public class GetURLContent {
 
     public String getURLCont(String urlAddress){
         StringBuffer content = new StringBuffer();
-
-
         try {
             URL url = new URL(urlAddress);
             URLConnection connection = url.openConnection();
@@ -36,4 +35,5 @@ public class GetURLContent {
         }
         return content.toString();
     }
+
 }

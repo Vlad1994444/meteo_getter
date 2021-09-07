@@ -1,18 +1,18 @@
 package main.java.model;
 
 public class Wind {
-    private int speed;
+    private double speed;
     private int degree;
 
     public Wind() {
     }
 
-    public Wind(int speed, int degree) {
+    public Wind(double speed, int degree) {
         this.speed = speed;
         this.degree = degree;
     }
 
-    public int getSpeed() {
+    public double getSpeed() {
         return speed;
     }
 
