@@ -1,60 +1,68 @@
 package main.java.window;
 
-import main.java.GetURLContent;
-import main.java.JSONParsing;
-import main.java.model.Root;
+import main.java.model.Constants;
 
 import javax.swing.*;
-import javax.swing.border.AbstractBorder;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.util.HashMap;
 
 public class FrameWindow extends JFrame {
 
-    Dimension dimension = new Dimension(500, 500);
+    private static final int ZERO_LOCATION = 0;
+    private static final Dimension TEXT_FIELD_DIMENSION = new Dimension(350, 50);
 
-    JSONParsing parser;
-    Root root;
+    PanelBackground background;
+
+    JTextField countryEntry;
+
+    LabelWindow labelSunrise;
+    LabelWindow labelSunset;
+
+    JButton button;
+
+    HashMap<String, LabelWindow> labels;
 
     public FrameWindow() {
+
         this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        this.setVisible(true);
-        this.setPreferredSize(dimension);
+        this.setPreferredSize(PanelBackground.DIMENSION);
         this.setLayout(null);
 
-        JTextField countryEntry = new JTextField();
-        countryEntry.setBounds(0, 0, 350, 50);
+        background = new PanelBackground();
+
+        labelSunrise = new LabelWindow(50, 75, Constants.SYS_SUNRISE);
+        labelSunset = new LabelWindow(50, 125, Constants.SYS_SUNSET);
+
+        labels = new HashMap<>();
+        labels.put(Constants.SYS_SUNRISE, labelSunrise);
+        labels.put(Constants.SYS_SUNSET, labelSunset);
+
+        countryEntry = new JTextField();
+        countryEntry.setSize(TEXT_FIELD_DIMENSION);
+        countryEntry.setLocation(ZERO_LOCATION, ZERO_LOCATION);
         countryEntry.setText("Enter preferred country");
+        countryEntry.setHorizontalAlignment(JLabel.CENTER);
+        countryEntry.addActionListener(new ActionToExecute(labels, countryEntry));
 
-        JLabel label = new JLabel("Sunrise");
-        label.setHorizontalAlignment(JLabel.CENTER);
-        label.setVisible(true);
-        label.setBounds(200, 200, 100, 50);
-        label.setBorder(BorderFactory.createDashedBorder(Color.CYAN));
+        button = new JButton();
+        button.setBounds(360, 10, 90, 40);
+        button.setText("<html>" + "<center>" + "Get forecast" + "</center>" + "</html>");
 
-        JButton button = new JButton();
-        button.setBounds(360, 10, 100, 20);
-        button.setText("Get forecast");
-        button.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                GetURLContent.CITY = countryEntry.getText();
-                parser = new JSONParsing();
-                root = parser.parse();
-                label.setText("<html>" + "<center>" +
-                        "Sunrise = "+ root.getCountrySunriseSunset().getSunrise()+
-                        "</center>" + "</html>");
-            }
-        });
+        button.addActionListener(new ActionToExecute(labels, countryEntry));
+
+        JLayeredPane layers = new JLayeredPane();
+        layers.setBounds(ZERO_LOCATION, ZERO_LOCATION, background.getWidth(), background.getHeight());
+        layers.add(background, Integer.valueOf(0));
+
+        for (LabelWindow label : labels.values()) {
+            layers.add(label, Integer.valueOf(1));
+        }
+        layers.add(button, Integer.valueOf(1));
+        layers.add(countryEntry, Integer.valueOf(1));
 
 
-
-        this.add(label);
-        this.add(button);
-        this.add(countryEntry);
-
+        this.add(layers);
         this.pack();
-
+        this.setVisible(true);
     }
 }

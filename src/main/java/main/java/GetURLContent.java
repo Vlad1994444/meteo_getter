@@ -16,9 +16,7 @@ public class GetURLContent {
     String output = getURLCont(
             "https://api.openweathermap.org/data/2.5/weather?q=" + CITY + "&units=metric&appid="+ API_TWO);
 
-    public String getOutput() {
-        return output;
-    }
+
 
     public String getURLCont(String urlAddress){
         StringBuffer content = new StringBuffer();
@@ -34,6 +32,10 @@ public class GetURLContent {
             System.out.println("Exception in URL part" + e);
         }
         return content.toString();
+    }
+
+    public String getOutput() {
+        return output;
     }
 
 }
